@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高凡 | 个人简历</title>
+  <style>
+    :root {
+      --primary: #1a4f8a;
+      --accent: #2e7fbf;
+      --light-bg: #f0f4fa;
+      --text: #222;
+      --muted: #666;
+      --border: #d0dce8;
+      --tag-bg: #e3edf8;
+      --tag-text: #1a4f8a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #eaf0f8;
+      color: var(--text);
+      min-height: 100vh;
+    }
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #0d6eac 100%);
+      color: #fff;
+      padding: 48px 0 36px;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 3px solid rgba(255,255,255,0.5);
+    }
+    .header-info h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .header-info .subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+    .header-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      opacity: 0.92;
+    }
+    .meta-item svg {
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+    /* ── Main layout ── */
+    .container {
+      max-width: 900px;
+      margin: 32px auto 48px;
+      padding: 0 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+    }
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(30,60,100,0.08);
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    /* ── Skills ── */
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    /* ── Timeline ── */
+    .timeline { display: flex; flex-direction: column; gap: 20px; }
+    .timeline-item { display: flex; gap: 16px; }
+    .tl-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+      width: 14px;
+    }
+    .tl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--accent);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .tl-bar {
+      flex: 1;
+      width: 2px;
+      background: var(--border);
+      margin-top: 4px;
+    }
+    .tl-body { flex: 1; padding-bottom: 4px; }
+    .tl-period {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .tl-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .tl-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .tl-desc {
+      font-size: 0.83rem;
+      color: #444;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+    .tl-desc li {
+      margin-left: 14px;
+      margin-top: 3px;
+    }
+    /* ── Publication ── */
+    .pub-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title { font-size: 0.87rem; font-weight: 600; line-height: 1.5; color: var(--text); }
+    .pub-meta { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .pub-badge {
+      display: inline-block;
+      background: #fff4e0;
+      color: #b06b00;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+    .pub-badge.accepted {
+      background: #e6f4ea;
+      color: #1a7a3a;
+    }
+    /* ── Self-eval ── */
+    .eval-text {
+      font-size: 0.87rem;
+      color: #444;
+      line-height: 1.8;
+    }
+    /* ── GPA badge ── */
+    .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .badge {
+      font-size: 0.75rem;
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 6px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="avatar">高</div>
+    <div class="header-info">
+      <h1>高 凡</h1>
+      <div class="subtitle">测绘科学与技术 · 冰冻圈 · 硕博连读生（中国科学院大学）</div>
+      <div class="header-meta">
+        <span class="meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.5 19.79 19.79 0 0 1 1 2.18 2 2 0 0 1 2.96 0h3a2 2 0 0 1 2 1.72c.13 1 .38 1.98.74 2.9a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 5.95 5.95l1.18-1.18a2 2 0 0 1 2.11-.45c.92.36 1.9.61 2.9.74A2 2 0 0 1 21 15.06"/></svg>
+          13061148788
+        </span>
+        <span class="meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          gaof043@163.com
+        </span>
+        <span class="meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          湖北 · 武汉
+        </span>
+        <span class="meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          1996.04.30
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ BODY ═══════════════ -->
+<div class="container">
+  <div class="grid">
+
+    <!-- ── LEFT COLUMN ── -->
+    <div class="left-col">
+
+      <!-- 技能 -->
+      <div class="card">
+        <div class="card-title">技能工具</div>
+        <div class="skill-list">
+          <span class="tag">Python</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Shell 脚本</span>
+          <span class="tag">NCO</span>
+          <span class="tag">CDO</span>
+          <span class="tag">ArcGIS</span>
+          <span class="tag">AutoCAD</span>
+          <span class="tag">CASS</span>
+          <span class="tag">VirtuoZo</span>
+          <span class="tag">COAWST</span>
+          <span class="tag">C#</span>
+          <span class="tag">ArcGIS Engine</span>
+          <span class="tag">GIS 开发</span>
+          <span class="tag">DEM 数据处理</span>
+          <span class="tag">数值模拟</span>
+          <span class="tag">遥感图像处理</span>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="card">
+        <div class="card-title">教育背景</div>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2018.09 — 至今</div>
+              <div class="tl-title">中国科学院大学</div>
+              <div class="tl-sub">测绘科学与技术 · 硕博连读</div>
+              <div class="badge-row"><span class="badge">GPA 3.76 / 5</span></div>
+              <div class="tl-desc">
+                主修：应用偏微分方程与科学计算、数值分析、计算流体力学、大地测量计算机代数分析、物理大地测量学、时变重力学、成像大地测量学概论、冰冻圈科学概论
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2014.09 — 2018.06</div>
+              <div class="tl-title">山东理工大学</div>
+              <div class="tl-sub">测绘工程 · 本科</div>
+              <div class="badge-row">
+                <span class="badge">GPA 88.1 / 100</span>
+                <span class="badge">专业排名 1/64</span>
+              </div>
+              <div class="tl-desc">
+                主修：C# 程序开发、空间数据库、遥感数字图像处理、地理信息系统开发、工程测量学、大地测量学等
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 自我评价 -->
+      <div class="card">
+        <div class="card-title">自我评价</div>
+        <p class="eval-text">
+          即将步入职场的新人，以积极主动的态度迎接每一个挑战。性格沉稳内敛，善于独立思考，做事注重条理与节奏；倾向于理清思路再行动，能准确表达观点并与团队高效协作。责任心强，吃苦耐劳，擅于管理时间，勇于应对变化；习惯制定可行的学习计划，循序渐进，能快速上手岗位所需知识技能。
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT COLUMN ── -->
+    <div class="right-col">
+
+      <!-- 项目经历 -->
+      <div class="card">
+        <div class="card-title">科研项目经历</div>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2024.7 — 2025.6 &nbsp;·&nbsp; 成员</div>
+              <div class="tl-title">21世纪以来亚洲高山区冰川动态及其与气候变化关系研究</div>
+              <ul class="tl-desc">
+                <li>基于 Linux 平台，使用 NCO 和 Python 对高亚洲 SRTM DEM 数据进行格式转换、变量提取与归一化预处理</li>
+                <li>采用开源冰盖数值模拟模型，编写 shell 运行脚本，开展高亚洲冰川动力学模拟研究</li>
+                <li>完成 2020 年高亚洲冰川动力状态的高分辨率模拟，并撰写项目中期阶段性成果报告</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2024.1 — 2025.4 &nbsp;·&nbsp; 成员</div>
+              <div class="tl-title">地球第三极近二十五年冰川物质平衡时空特征及其与气候变化关系研究</div>
+              <ul class="tl-desc">
+                <li>熟练运用 CDO、Python、ArcGIS 处理 COAWST 月尺度区域气候模型输出的大气温度、降水通量数据</li>
+                <li>引入高亚洲地形数据，基于度日模型（Degree-Day Model）完成 2015–2025 年高亚洲表面质量平衡的长时间序列模拟</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 论文成果 -->
+      <div class="card">
+        <div class="card-title">论文成果</div>
+
+        <div class="pub-item">
+          <div class="pub-title">
+            Fan G., Qiang S., Hansheng W., Tong Z. et al. Investigating the impact of sub-ice shelf melt on Antarctic ice sheet spin-up and projections[J].
+            <em>The Cryosphere</em>, 2026 (20): 1947–1965.
+            <span class="pub-badge">冰冻圈 TOP 期刊</span>
+          </div>
+          <div class="pub-meta">第一作者 · SCI 检索</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">
+            Fan G., Qiang S., Hansheng W., Liming J., C K Shum, Yan A., Xu Z. Modeling Antarctic ice sheet sensitivity at atmospheric, bedrock and oceanic interfaces[J].
+            <em>All Earth</em>, 2026.
+            <span class="pub-badge accepted">Accepted</span>
+          </div>
+          <div class="pub-meta">第一作者 · SCI 检索</div>
+        </div>
+
+      </div>
+
+      <!-- 在校实习经历 -->
+      <div class="card">
+        <div class="card-title">在校实习经历</div>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2018.05 — 2018.06</div>
+              <div class="tl-title">航空摄影测量影像处理</div>
+              <div class="tl-desc">在立体模型上开展地物要素采集，采用点线面矢量化方式，分层提取居民地、交通网、水系、植被及等高线，生成完整地表矢量图。</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2017.06 — 2017.07</div>
+              <div class="tl-title">大地测量实习</div>
+              <div class="tl-desc">担任小组组长，参与校园/实验场三等导线网测量项目，负责全网设计、观测与数据处理，使用 AutoCAD 和 CASS 完成测图绘制。</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2016.12 — 2017.01</div>
+              <div class="tl-title">摄影测量与遥感实习</div>
+              <div class="tl-desc">使用 VirtuoZo 全数字摄影测量软件，完成航空立体像对的定向、匹配与重采样，绘制矢量要素并输出数字线划图。</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div class="tl-body">
+              <div class="tl-period">2016.11 — 2016.12</div>
+              <div class="tl-title">地理信息系统实习</div>
+              <div class="tl-desc">在 ArcGIS Engine 环境下实现"路径分析"功能模块的二次开发。</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:20px 0 32px;font-size:0.78rem;color:#999;">
+  © 2026 高凡 · Personal Resume
+</footer>
+
+</body>
+</html>
